@@ -10,7 +10,7 @@ function Home() {
   return (
     <>
       <ZipCodeChecker />
-      <div style={{ marginTop: "20px" }}>
+      <div style={{ marginTop: "40px" }}>
         <Banner />
       </div>
       <div style={{ marginTop: "40px" }}>

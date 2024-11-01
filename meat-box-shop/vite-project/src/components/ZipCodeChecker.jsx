@@ -48,20 +48,21 @@ const ZipCodeChecker = () => {
           variant="outlined"
           value={zipCode}
           onChange={(e) => setZipCode(e.target.value)}
-          sx={{ width: "250px", fontWeight: "bold" }}
+          sx={{ width: "270px", fontWeight: "bold" }}
           InputProps={{
             endAdornment: (
-              <InputAdornment position="end">
+              <InputAdornment position="end" sx={{ marginRight: "-13px" }}>
                 <Button
                   variant="contained"
                   color="warning"
                   onClick={handleCheckZipCode}
                   sx={{
                     fontWeight: "bold",
-                    height: "56px",
-                    borderRadius: 0,
+                    height: "54px",
+                    width: "84px",
                     borderTopRightRadius: "4px",
                     borderBottomRightRadius: "4px",
+                    marginLeft: "-1px",
                   }}
                 >
                   TEST

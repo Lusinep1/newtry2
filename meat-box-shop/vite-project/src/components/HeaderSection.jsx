@@ -1,6 +1,6 @@
 // src/components/HeaderSection.jsx
 import React from "react";
-import ProgressBar from "./ProgressBar";
+import ProgressBar from "./loyaltyBoxShared/ProgressBar";
 
 function HeaderSection({ currentStep }) {
   return (

@@ -24,6 +24,7 @@ const Navbar = () => {
         backgroundColor: "white",
         boxShadow: "none",
         borderBottom: "1px solid #ddd",
+        padding: "20px",
       }}
     >
       <Toolbar
@@ -62,7 +63,7 @@ const Navbar = () => {
             sx={{
               cursor: "pointer",
               color: "black",
-              fontWeight: "500",
+              fontWeight: "700",
               fontSize: "16px",
               "&:hover": {
                 color: "#2E7D32",
@@ -76,7 +77,7 @@ const Navbar = () => {
             sx={{
               cursor: "pointer",
               color: "black",
-              fontWeight: "500",
+              fontWeight: "700",
               fontSize: "16px",
               "&:hover": {
                 color: "#2E7D32",
@@ -90,7 +91,7 @@ const Navbar = () => {
             sx={{
               cursor: "pointer",
               color: "black",
-              fontWeight: "500",
+              fontWeight: "700",
               fontSize: "16px",
               "&:hover": {
                 color: "#2E7D32",
@@ -104,7 +105,7 @@ const Navbar = () => {
             sx={{
               cursor: "pointer",
               color: "black",
-              fontWeight: "500",
+              fontWeight: "700",
               fontSize: "16px",
               "&:hover": {
                 color: "#2E7D32",
