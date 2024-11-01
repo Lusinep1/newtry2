@@ -1,4 +1,4 @@
-// src/components/SelectContent.jsx
+// src/components/loyaltyBoxShared/SelectContent.jsx
 import React from "react";
 
 function SelectContent() {

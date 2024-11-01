@@ -1,4 +1,5 @@
-// src/components/BackButton.jsx
+// src/components/loyaltyBoxShared/BackButton.jsx
+
 import React from "react";
 import { useNavigate } from "react-router-dom";
 

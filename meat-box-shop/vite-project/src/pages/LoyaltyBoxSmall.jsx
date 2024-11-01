@@ -1,8 +1,8 @@
 // src/pages/LoyaltyBoxSmall.jsx
 import React, { useState, useContext } from "react";
-import ProgressBar from "../components/ProgressBar";
-import BackButton from "../components/BackButton";
-import SelectContent from "../components/SelectContent";
+import ProgressBar from "../components/loyaltyBoxShared/ProgressBar";
+import BackButton from "../components/loyaltyBoxShared/BackButton";
+import SelectContent from "../components/loyaltyBoxShared/SelectContent";
 import ProductGrid from "../components/ProductGrid";
 import Sidebar from "../components/Sidebar";
 import { CartContext } from "../context/CartContext";
