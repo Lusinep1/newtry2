@@ -3,13 +3,12 @@ import React, { useState, useContext } from "react";
 import ProgressBar from "../components/ProgressBar";
 import BackButton from "../components/BackButton";
 import SelectContent from "../components/SelectContent";
-import ProductList from "../components/ProductList";
-import PointsTracker from "../components/PointsTracker";
-import MyChoices from "../components/MyChoices";
-import GoAheadButton from "../components/GoAheadButton";
+import ProductGrid from "../components/ProductGrid";
+import Sidebar from "../components/Sidebar";
 import { CartContext } from "../context/CartContext";
 import { AuthContext } from "../context/AuthContext";
 
+// Hardcoded list of fish products
 const fishProducts = [
   {
     id: 1,
@@ -42,15 +41,21 @@ const fishProducts = [
 ];
 
 const LoyaltyBoxSmall = () => {
-  const { user } = useContext(AuthContext);
-  const { addToCart } = useContext(CartContext);
-  const [selectedProducts, setSelectedProducts] = useState([]);
-  const [totalPoints, setTotalPoints] = useState(0);
-  const maxPoints = 30;
+  const { user } = useContext(AuthContext); // User authentication context
+  const { addToCart } = useContext(CartContext); // Cart management context
+  const [selectedProducts, setSelectedProducts] = useState([]); // State for selected products
+  const [totalPoints, setTotalPoints] = useState(0); // State for total points
+  const maxPoints = 30; // Maximum points allowed
 
+  // Function to add a product, if within point limits and if not already added
   const handleAddProduct = (product) => {
     if (!user) {
-      console.error("You must be logged in to add products to the cart.");
+      alert("You must be logged in to add products to the cart.");
+      return;
+    }
+
+    if (selectedProducts.find((p) => p.id === product.id)) {
+      alert("Product is already added to the selection.");
       return;
     }
 
@@ -58,10 +63,11 @@ const LoyaltyBoxSmall = () => {
       setSelectedProducts([...selectedProducts, product]);
       setTotalPoints(totalPoints + product.points);
     } else {
-      console.error("Cannot exceed maximum points for the box.");
+      alert("Cannot exceed maximum points for the box.");
     }
   };
 
+  // Function to remove a product and update total points
   const handleRemoveProduct = (productId) => {
     const updatedProducts = selectedProducts.filter(
       (product) => product.id !== productId
@@ -76,9 +82,10 @@ const LoyaltyBoxSmall = () => {
     }
   };
 
+  // Function to handle the "Go Ahead" button click, adding products to cart
   const handleGoAheadClick = () => {
     if (!user || !user.name) {
-      console.error("User information is missing or invalid.");
+      alert("User information is missing or invalid.");
       return;
     }
 
@@ -104,79 +111,14 @@ const LoyaltyBoxSmall = () => {
           padding: "20px",
         }}
       >
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "20px",
-            width: "65%",
-          }}
-        >
-          {fishProducts.map((product) => (
-            <div
-              key={product.id}
-              style={{
-                border: "1px solid #ccc",
-                borderRadius: "8px",
-                overflow: "hidden",
-                backgroundColor: "#fff",
-                textAlign: "center",
-                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-                transition: "transform 0.2s ease-in-out",
-              }}
-            >
-              <img
-                src={product.image}
-                alt={product.name}
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  objectFit: "cover",
-                }}
-              />
-              <h3 style={{ margin: "10px 0", fontSize: "1.2rem" }}>
-                {product.name}
-              </h3>
-              <p style={{ fontSize: "0.9rem", color: "#777" }}>
-                {product.weight} - {product.points} points
-              </p>
-              <button
-                style={{
-                  backgroundColor: "orange",
-                  border: "none",
-                  color: "white",
-                  padding: "10px 15px",
-                  fontSize: "1rem",
-                  cursor: "pointer",
-                  borderRadius: "0 0 8px 8px",
-                  transition: "background-color 0.3s ease",
-                }}
-                onClick={() => handleAddProduct(product)}
-              >
-                Add to Cart
-              </button>
-            </div>
-          ))}
-        </div>
-        <div
-          style={{
-            width: "30%",
-            padding: "20px",
-            backgroundColor: "#f7f7f7",
-            border: "1px solid #ccc",
-            borderRadius: "8px",
-            height: "fit-content",
-          }}
-        >
-          <MyChoices selectedProducts={selectedProducts} />
-          <PointsTracker currentPoints={totalPoints} maxPoints={maxPoints} />
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <GoAheadButton
-              active={totalPoints === maxPoints}
-              onClick={handleGoAheadClick}
-            />
-          </div>
-        </div>
+        <ProductGrid products={fishProducts} onAddProduct={handleAddProduct} />
+        <Sidebar
+          selectedProducts={selectedProducts}
+          totalPoints={totalPoints}
+          maxPoints={maxPoints}
+          onGoAheadClick={handleGoAheadClick}
+          onRemoveProduct={handleRemoveProduct}
+        />
       </div>
     </>
   );

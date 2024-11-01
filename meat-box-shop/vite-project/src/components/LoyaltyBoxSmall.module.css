@@ -1,0 +1,64 @@
+/* src/components/LoyaltyBoxSmall.module.css */
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(200px, 1fr)
+  ); /* Responsive grid */
+  gap: 16px;
+  padding: 20px;
+  align-items: start;
+}
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.productImage {
+  width: 100%; /* Set image to fill the card width */
+  max-width: 150px; /* Max width to control overall size */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Fit image within specified dimensions */
+  border-radius: 8px; /* Optional: rounded corners */
+  margin-bottom: 12px;
+}
+
+.productName {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.productWeight {
+  font-size: 0.9em;
+  color: #666;
+}
+
+.productPoints {
+  font-size: 0.8em;
+  color: #999;
+  margin-top: 8px;
+}
+
+.addButton {
+  margin-top: 12px;
+  padding: 8px 12px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.addButton:hover {
+  background-color: #45a049;
+}
