@@ -5,6 +5,7 @@ import Banner from "../components/Banner";
 import FeaturesSection from "../components/FeaturesSection";
 import Reviews from "../components/Reviews";
 import CustomerBox from "../components/CustomerBox";
+import Testimonial from "../components/Testimonial";
 
 function Home() {
   return (
@@ -21,6 +22,9 @@ function Home() {
       </div>
       <div style={{ marginTop: "40px" }}>
         <CustomerBox />
+      </div>
+      <div style={{ marginTop: "40px" }}>
+        <Testimonial />
       </div>
     </>
   );
